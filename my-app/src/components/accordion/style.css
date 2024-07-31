@@ -1,0 +1,32 @@
+.wrapper {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  margin: auto 0px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.accordion {
+  width: 500px;
+}
+
+.item {
+  background-color: brown;
+  margin-bottom: 5px;
+  padding: 5px 10px;
+}
+
+.title {
+  color: antiquewhite;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+.answer {
+  color: antiquewhite;
+  height: auto;
+}
