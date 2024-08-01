@@ -1,14 +1,27 @@
 .wrapper {
   display: flex;
   width: 100vw;
-  height: 100vh;
+  height: 80vh;
   margin: auto 0px;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
-  gap: 20px;
 }
 
+.button {
+  display: flex;
+  margin: auto 0px;
+  height: 20vh;
+  align-items: center;
+  justify-content: center;
+}
+.Buttondisable {
+  background-color: black;
+  color: aliceblue;
+}
+
+.Buttonenable {
+  background-color: rgb(88, 236, 34);
+}
 .accordion {
   width: 500px;
 }

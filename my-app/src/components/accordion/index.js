@@ -5,11 +5,27 @@ import { useState } from "react";
 import "./style.css";
 export default function Accordion() {
   const [selected, setSelected] = useState(null);
+  const [enableMuitlpleSelect, setenableMuitlpleSelect] = useState(false);
+  const [multiple, setmultiple] = useState([]);
 
   function handleselectedID(selectedID) {
-    console.log(selected, selectedID);
     setSelected(selectedID === selected ? null : selectedID);
   }
+
+  function handleMultipleSelection(selectedID) {
+    const ArrMultiple = [...multiple];
+
+    const findIndex = ArrMultiple.indexOf(selectedID);
+
+    console.log(findIndex);
+    findIndex === -1
+      ? ArrMultiple.push(selectedID)
+      : ArrMultiple.splice(findIndex, 1);
+
+    setmultiple(ArrMultiple);
+  }
+
+  console.log(multiple);
 
   const data = [
     {
@@ -36,6 +52,16 @@ export default function Accordion() {
 
   return (
     <>
+      <div className="button">
+        <button
+          className={`${
+            enableMuitlpleSelect === false ? "Buttonenable" : "Buttondisable"
+          }`}
+          onClick={() => setenableMuitlpleSelect(!enableMuitlpleSelect)}
+        >
+          Enable Muiltple selected
+        </button>
+      </div>
       <div className="wrapper">
         <div className="accordion">
           {data && data.length > 0 ? (
@@ -43,13 +69,17 @@ export default function Accordion() {
               <div key={data.id} className="item">
                 <div
                   className="title"
-                  onClick={() => handleselectedID(data.id)}
+                  onClick={() =>
+                    enableMuitlpleSelect
+                      ? handleMultipleSelection(data.id)
+                      : handleselectedID(data.id)
+                  }
                 >
                   {" "}
                   <h4>{data.question}</h4>
                   <span>+</span>
                 </div>
-                {selected === data.id ? (
+                {selected === data.id || multiple.indexOf(data.id) !== -1 ? (
                   <div className="answer">
                     <h4>{data.answer}</h4>
                   </div>
